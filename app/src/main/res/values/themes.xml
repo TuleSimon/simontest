@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Secondtest" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:textColor">@color/black2</item>
+        <item name="windowActionBar"> false</item>
+        <item name="android:windowBackground">#F4F3F3</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+
+    <style name="headerText" parent="Theme.Secondtest">
+        <item name="android:fontFamily">@font/baloo_da</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black2</item>
+    </style>
+
+
+    <style name="chipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipStrokeColor"> @color/chip_colors</item>
+        <item name="chipStrokeWidth"> 1dp</item>
+       <item name="android:textColor">@color/chip_text_colors</item>
+        <item name="chipBackgroundColor">@color/chip_bg_colors</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+</resources>
