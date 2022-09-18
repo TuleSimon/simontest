@@ -37,6 +37,16 @@ jobs:
       - name: Build gradle project
         run: ./gradlew build
 
+
       # Create APK Debug
-      - name: Build apk debug project (APK) - ${{ env.main_project_module }} module
+      - name: Build apk debug project (APK)
         run: ./gradlew assembleDebug
+
+      # Upload Artifact Build
+      # Noted For Output [module-name]/build/outputs/
+      - name: Upload debug build APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: App bundle(s) and APK(s) generated
+          path: app/build/outputs/
+
