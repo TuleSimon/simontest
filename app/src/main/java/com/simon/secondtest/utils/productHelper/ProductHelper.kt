@@ -7,9 +7,9 @@ object ProductHelper {
     //function to extract the different brands from the original list, removing duplicates
     suspend fun extractBrands(list:List<ProductModel>):List<String>{
         val brandsMap = list.groupBy { it.brand }
-        val list = brandsMap.keys.toList()
-        if(list.isNotEmpty())
-        return list.sortedBy { it?:"z"}.map { it.toString() }
+        val lists = brandsMap.keys.toList()
+        if(lists.isNotEmpty())
+        return lists.sortedBy { it?:"z"}.map { it.toString() }
         else
             return emptyList()
     }

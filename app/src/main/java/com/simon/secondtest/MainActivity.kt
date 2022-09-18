@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        navController.addOnDestinationChangedListener{navController,navDestination,_ ->
+        navController.addOnDestinationChangedListener{_,navDestination,_ ->
             when(navDestination.id ){
                 R.id.viewProductFragment ->{
                     binding.navView.hide()
