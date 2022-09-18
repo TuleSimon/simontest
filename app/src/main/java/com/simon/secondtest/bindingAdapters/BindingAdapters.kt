@@ -29,7 +29,7 @@ class BindingAdapters {
         @BindingAdapter("setPrice","setCurrency", requireAll = true)
         @JvmStatic
         fun setProductPrice(textView: TextView, price: String?, currency: String?) {
-            textView.text = "$currency $price"
+            textView.text = "${currency?:"$"} ${price?:"0"}"
         }
 
 

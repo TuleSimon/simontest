@@ -1,41 +1,44 @@
 package com.simon.secondtest.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ProductModel(@SerializedName("website_link")
-                        val websiteLink: String = "",
+                        val websiteLink: String? = "",
                         @SerializedName("image_link")
-                        val imageLink: String = "",
+                        val imageLink: String ?= "",
 
                         @SerializedName("description")
-                        val description: String = "",
+                        val description: String? = "",
                         @SerializedName("created_at")
-                        val createdAt: String = "",
+                        val createdAt: String ?= "",
                         @SerializedName("api_featured_image")
-                        val apiFeaturedImage: String = "",
+                        val apiFeaturedImage: String? = "",
                         @SerializedName("product_type")
-                        val productType: String = "",
+                        val productType: String ?= "",
                         @SerializedName("updated_at")
-                        val updatedAt: String = "",
+                        val updatedAt: String ?= "",
                         @SerializedName("price")
-                        val price: String = "",
+                        val price: String ?= "",
                         @SerializedName("tag_list")
                         val tagList: List<String>?,
                         @SerializedName("name")
-                        val name: String = "",
+                        val name: String? = "",
                         @SerializedName("price_sign")
-                        val priceSign: String = "",
+                        val priceSign: String ?= "",
                         @SerializedName("currency")
-                        val currency: String = "",
+                        val currency: String? = "",
                         @SerializedName("id")
-                        val id: Int = 0,
+                        val id: Int ?= 0,
                         @SerializedName("category")
-                        val category: String = "",
+                        val category: String? = "",
                         @SerializedName("product_colors")
                         val productColors: List<ProductColorsItem>?,
                         @SerializedName("brand")
-                        val brand: String = "",
+                        val brand: String ?= "",
                         @SerializedName("product_api_url")
-                        val productApiUrl: String = "",
+                        val productApiUrl: String? = "",
                         @SerializedName("product_link")
-                        val productLink: String = "")
+                        val productLink: String ?= ""):Parcelable

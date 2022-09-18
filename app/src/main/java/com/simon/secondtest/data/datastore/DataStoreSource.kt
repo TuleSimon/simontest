@@ -29,7 +29,7 @@ class DataStoreSource @Inject constructor(
         }
 
     //getting selected brand from datastore
-    suspend fun getSelectedBrand():Flow<String>{
+     fun getSelectedBrand():Flow<String>{
         return _getSelectedBrand
     }
 

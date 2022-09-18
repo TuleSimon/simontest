@@ -2,21 +2,36 @@ package com.simon.secondtest.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.simon.secondtest.databinding.ProductRowBinding
+import com.simon.secondtest.interfaces.ProductClickedInterface
 import com.simon.secondtest.models.ProductModel
+import com.simon.secondtest.utils.extensionsFunctions.hide
+import com.simon.secondtest.utils.extensionsFunctions.show
 import timber.log.Timber
 
-class ProductRecyclerViewAdapters():RecyclerView.Adapter<ProductRecyclerViewAdapters.viewHolders>() {
+class ProductRecyclerViewAdapters(
+    val clicked:ProductClickedInterface
+):RecyclerView.Adapter<ProductRecyclerViewAdapters.viewHolders>() {
 
     inner class viewHolders(val binding:ProductRowBinding):RecyclerView.ViewHolder(binding.root){
 
-        fun bind(productModel: ProductModel){
+        fun bind(productModel: ProductModel, previous:ProductModel?){
             binding.product = productModel
-            val url = productModel.apiFeaturedImage.replace("//","")
+            val url = productModel.apiFeaturedImage?.replace("//","")
             Timber.d(url)
+            previous?.apply {
+                if(previous.productType.equals(productModel.productType,true)){
+                    binding.productType.hide()
+                }
+            }?:binding.productType.show()
+            binding.productCard.setOnClickListener{
+                clicked.clicked(productModel,binding.productImage)
+            }
+            ViewCompat.setTransitionName(binding.productImage,productModel.id.toString())
             binding.executePendingBindings()
         }
     }
@@ -33,7 +48,10 @@ class ProductRecyclerViewAdapters():RecyclerView.Adapter<ProductRecyclerViewAdap
     }
 
     override fun onBindViewHolder(holder: viewHolders, position: Int) {
-        holder.bind(products[position])
+        if(position>0)
+        holder.bind(products[position],products[position-1])
+        else
+            holder.bind(products[position],null)
 
     }
 
@@ -42,6 +60,12 @@ class ProductRecyclerViewAdapters():RecyclerView.Adapter<ProductRecyclerViewAdap
         val dif = DiffUtil.calculateDiff(com.simon.secondtest.utils.difUtil.DiffUtil(newlist,products))
         products = newlist.toMutableList()
         dif.dispatchUpdatesTo(this)
+    }
+
+    //function to set the initial recyclerview list
+    fun setProducts2(newlist:List<ProductModel>){
+        products = newlist.toMutableList()
+        notifyDataSetChanged()
     }
 
 

@@ -3,6 +3,8 @@ package com.simon.secondtest.di.modules
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.simon.secondtest.data.api.ProductApi
+import com.simon.secondtest.data.datasource.ProductDataSource
+import com.simon.secondtest.interfaces.ProductDataSourceInterface
 import com.simon.secondtest.utils.CONS.BASEURL
 import com.simon.secondtest.utils.network.ConnectivityInterceptor
 import dagger.Module
@@ -24,6 +26,12 @@ object NetworkModule {
     @Singleton
     fun provideGsonConverterFactory():GsonConverterFactory{
         return GsonConverterFactory.create(GsonBuilder().setLenient().create())
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductDataSource(productApi: ProductApi):ProductDataSourceInterface{
+        return ProductDataSource(productApi)
     }
 
     @Provides
