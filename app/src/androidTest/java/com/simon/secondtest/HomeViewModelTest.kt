@@ -98,6 +98,13 @@ class HomeViewModelTest {
         Truth.assertThat(value).isEqualTo("testbrand")
     }
 
+    @Test
+    fun getBrandProducts() = runTest{
+        homeViewModel.getProductsByBrand(fakeApiProductList, fakeBrands)
+        delay(2000)
+        val value=homeViewModel.brandProducts.first()
+        Truth.assertThat(value.data).isEqualTo(fakeBrandProductList)
+    }
 
     @Test
     fun setSelectedBrand() = runTest{
@@ -106,13 +113,6 @@ class HomeViewModelTest {
         Truth.assertThat(value).isEqualTo("testbrand")
     }
 
-    @Test
-    fun getBrandProducts() = runTest{
-        homeViewModel.getProductsByBrand(fakeApiProductList, fakeBrands)
-        delay(2000)
-        val value=homeViewModel.brandProducts.first()
-        Truth.assertThat(value.data).isEqualTo(fakeBrandProductList)
-    }
 
     @Test
     fun getBrands() = runTest {
