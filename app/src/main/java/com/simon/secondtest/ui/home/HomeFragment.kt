@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -130,6 +131,8 @@ class HomeFragment : Fragment(), ProductClickedInterface{
     //function to create chip from all the brands in our api product list and add them to our chp group,
     private fun populateBrandsToChipGroup(list:List<String>) = lifecycleScope.launch{
         binding.chipGroup.removeAllViews()
+
+        val checked = false
         list.forEach {
             val chip =Chip(requireContext(),null, com.google.android.material.R.attr.chipStyle).apply {
                 text = it

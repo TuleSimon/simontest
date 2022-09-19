@@ -44,17 +44,22 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener{_,navDestination,_ ->
             when(navDestination.id ){
-                R.id.viewProductFragment ->{
+                R.id.navigation_home ->{
+                    binding.refresh.show()
+                    binding.navView.show()
+                }
+                R.id.navigation_dashboard ->{
+                    binding.navView.show()
+                    binding.refresh.hide()
+                }
+                else ->{
+
                     binding.navView.hide()
                     binding.toolbar.setNavigationOnClickListener {
                         navController.navigateUp()
                     }
                     binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
                     binding.refresh.hide()
-                }
-                else ->{
-                    binding.refresh.show()
-                    binding.navView.show()
                 }
             }
         }

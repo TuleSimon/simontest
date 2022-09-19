@@ -9,10 +9,7 @@ import com.simon.secondtest.enums.NetworkResult
 import com.simon.secondtest.utils.exceptions.NoConnectivityException
 import com.simon.secondtest.utils.productHelper.ProductHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import timber.log.Timber
@@ -140,8 +137,9 @@ class HomeViewModel @Inject constructor(
             brandProducts.emit(NetworkResult.Success(lists))
         }
         else{
-            val lists= ProductHelper.getBrandProducts(brandList[0], list).sortedBy { it.productType }
-            brandProducts.emit(NetworkResult.Success(lists))
+//            val lists= ProductHelper.getBrandProducts(brandList[0], list).sortedBy { it.productType }
+            setSelectedBrand(brandList[0])
+//            brandProducts.emit(NetworkResult.Success(lists))
         }
     }
 
